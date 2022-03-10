@@ -3,6 +3,7 @@ const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect')
 require('dotenv').config({ path: '.env' })
+const notFound = require('./middleware/not-found')
 
 // middleware
 app.use(express.static('./public'))
@@ -10,9 +11,12 @@ app.use(express.json());
 
 // routes
 app.get('/', (req, res) => {
-    res.send(`<p>Tsunami</p>`)
+    res.send()
 })
 app.use('/api/v1/tasks', tasks)
+
+// custom 404 response
+app.use(notFound)
 
 const port = 3500
 

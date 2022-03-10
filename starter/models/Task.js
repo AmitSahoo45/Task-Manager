@@ -3,16 +3,16 @@ const mongoose = require('mongoose')
 const TaskSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Must provide Name'],
+        required: [true, 'must provide name'],
         trim: true,
-        maxlength: [100, 'Name can not be more than 20 characters'],
-        minlength: [3, 'Name can not be less than 3 characters']
+        maxlength: [20, 'name can not be more than 20 characters'],
     },
     completed: {
         type: Boolean,
-        default: false
-    }
+        default: false,
+    },
 })
+
 // ***cp5
 // adding validation to our schema
 // when we pass empty values like name: '', completed: '' or just {} that would get accepted.
